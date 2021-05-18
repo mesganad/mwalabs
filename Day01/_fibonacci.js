@@ -1,3 +1,5 @@
+
+
 let fib=function(n){
     if(n<=2){
         return 1;
@@ -6,4 +8,4 @@ let fib=function(n){
         return fib(n-1)+fib(n-2);
     }
 };
-console.log("Fibonacci of 38 is: "+fib(38));
+module.exports={fib:fib}

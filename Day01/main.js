@@ -1,5 +1,4 @@
-let child_process=require("child_process");
 console.log("1: Start");
-let process=child_process.spawn("node",["_fibonacci.js"],{stdio:"inherit"});
-console.log("2: End");
-
+let f=require("./_fibonacci");
+setTimeout(function(){console.log("Fibonacci of 38 is: "+f.fib(38))},0);
+console.log("2: End")

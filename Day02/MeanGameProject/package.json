@@ -1,0 +1,15 @@
+{
+  "name": "meangameproject",
+  "version": "1.0.0",
+  "description": "My first game project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mesgan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

@@ -1,26 +1,26 @@
 let express = require("express");
-let app=express();
-let path=require("path");
-let routes=require("./api/routes");
+let app = express();
+let path = require("path");
+let routes = require("./api/routes");
 require("./api/data/dbconnection.js").open();
-app.set("port",5000);
-app.use("/public", express.static(path.join(__dirname,"public")));
-app.get("/",function(req,res){
+app.set("port", 5000);
+app.use("/public", express.static(path.join(__dirname, "public")));
+app.get("/", function (req, res) {
     console.log("Get received");
-    res.status(200).sendFile(path.join(__dirname,"public","index.html"));
+    res.status(200).sendFile(path.join(__dirname, "public", "index.html"));
 });
 //json request
-app.use("/api",routes);
-         
+app.use("/api", routes);
+
 //application level middleware
-app.use("/css",function(req,res,next){
-console.log(req.method,req.url);
-next();
+app.use("/css", function (req, res, next) {
+    console.log(req.method, req.url);
+    next();
 });
 //order matters
-app.use("/public",express.static(path.join(__dirname,"public")));
+app.use("/public", express.static(path.join(__dirname, "public")));
 
-let server=app.listen(app.get("port"),function(){
-   let port = server.address().port;
-   console.log("Listening "+port);
+let server = app.listen(app.get("port"), function () {
+    let port = server.address().port;
+    console.log("Listening " + port);
 });

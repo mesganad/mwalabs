@@ -1,5 +1,5 @@
 const MongoClient = require("mongodb").MongoClient;
-const dbName = "meanGamesDb";
+const dbName = "meanGames";
 const dburl = "mongodb://localhost:27017/" + dbName;
 var_connection = null;
 var open = function () {

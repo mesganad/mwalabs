@@ -1,11 +1,11 @@
 const mongoose=require("mongoose");
 require("./api/data/db.js");
-require("./api/data/games-model");
+require("./api/data/students-model");
 let express = require("express");
 let app = express();
 let path = require("path");
 let routes = require("./api/routes");
-const { gamesGetAll } = require("./api/routes/controllers/games.controllers.js");
+const { gamesGetAll } = require("./api/routes/controllers/students.controller.js");
 require("./api/data/db.js");
 app.set("port", 5000);
 app.use("/public", express.static(path.join(__dirname, "public")));

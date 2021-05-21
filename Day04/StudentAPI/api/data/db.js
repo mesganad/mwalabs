@@ -1,5 +1,7 @@
+
+
 var mongoose = require("mongoose");
-require("./games-model.js");
+require("./students-model.js");
 var dbURL = "mongodb://localhost:27017/studentdb";
 mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.connection.on("connected", function () {
@@ -11,6 +13,8 @@ mongoose.connection.on("disconnected", function () {
 mongoose.connection.on("error", function (err) {
     console.log("Mongoose connection error " + err);
 });
+
+
 
 process.on("SIGINT", function() {
     mongoose.connection.close(function() {

@@ -5,7 +5,7 @@ const addressSchema=new mongoose.Schema({
     city:String,
     zipcode:Number
 });
-var studentsSchema= mongoose.Schema({
+var studentsSchema= new mongoose.Schema({
 name : {
     type:String,
     required:true

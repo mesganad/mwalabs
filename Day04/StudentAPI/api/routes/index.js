@@ -1,9 +1,10 @@
+
 const express=require("express");
-const router=express.Router();
-const controllerGames=require("./controllers/games.controllers.js");
-const controllerStudents=require("./controllers/address.controller.js");
-router.route("/games").get(controllerGames.gamesGetAll);
-router.route("/games/:gameId").get(controllerGames.gamesGetOne);
-router.route("/games/:gameId/address").get(controllerStudents.addressGetAll);
-router.route("/games/:gameId/address/:addressId").get(controllerStudents.addressGetOne);
-module.exports = router;
+const Router=express.Router();
+const controllerStudents=require("./controllers/students.controller.js");
+const controllerAddress=require("./controllers/address.controller.js");
+Router.route("/students").get(controllerStudents.studentsGetAll);
+Router.route("/students/:studentId").get(controllerStudents.studentsGetOne);
+Router.route("/students/:studentId/address").get(controllerAddress.addressGetAll);
+Router.route("/students/:studentId/address/:addressId").get(controllerAddress.addressGetOne);
+module.exports = Router;

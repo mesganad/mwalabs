@@ -1,0 +1,18 @@
+{
+  "name": "app07",
+  "version": "1.0.0",
+  "description": "this is the first application done to Mean Games application",
+  "main": "app07.js",
+  "scripts": {
+    "start": "app07.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mesgan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jquery": "^3.6.0",
+    "mongodb": "^3.6.7",
+    "mongoose": "^5.12.10"
+  }
+}

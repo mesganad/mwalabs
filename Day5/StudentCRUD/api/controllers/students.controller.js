@@ -4,7 +4,7 @@ const Student = mongoose.model("Student");
 
 module.exports.studentsGetAll = function (req, res) {
     var offset = 0;
-    var count = 2;
+    var count = 3;
     const maxCount = 10;
     if (req.query && req.query.offset) {
         offset = parseInt(req.query.offset, 10);
@@ -49,7 +49,9 @@ module.exports.studentsGetOne = function (req, res) {
 }
 
 module.exports.studentsAddOne = function (req, res) {
-    Student.create({ name: req.body.name, grade: req.body.grade, address: {} }, function (err, student) {
+    console.log(req.body.name);
+    console.log(req.body.grade);
+    Student.create({ name: req.body.name, grade: req.body.grade}, function (err, student) {
         if (err) {
             console.log("Error inserting student");
             res.status(400).json(err);

@@ -11,7 +11,7 @@ var mongoose= require("mongoose");
          max: 5,
          required: true
      },
-     review: {
+     reviews: {
          type: String,
          required: true
      },

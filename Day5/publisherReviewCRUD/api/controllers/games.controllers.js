@@ -17,7 +17,6 @@ module.exports.gamesGateAll = function (req, res) {
     }
     //Limit check
     if (count > maxCount) {
-        //count =maxCount;
         res.status(404).json({ "messahe": "the query string count can not exceed " + maxCount });
     }
     //type check for the input query
@@ -25,9 +24,8 @@ module.exports.gamesGateAll = function (req, res) {
         res.status(404).json({ "messahe": "the query string offset and count should be a number" });
     }
 
-    Game.find().skip(offset).limit(count).exec(function (err, games) {
-        //error check
-
+    //error check
+    Game.find().exec(function (err, games) {
         if (err) {
             console.log("error finding games");
             res.status(500).json(err);
@@ -87,8 +85,6 @@ module.exports.gamesAddOne = function (req, res) {
         }
     });
 }
-
-
 
 //update a game 
 module.exports.gamesUpdateOne = function (req, res) {

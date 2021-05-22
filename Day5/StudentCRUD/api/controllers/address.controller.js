@@ -2,17 +2,21 @@
 const mongoose = require("mongoose");
 const Student = mongoose.model("Student");
 //getting all addresses on specific student
+
 module.exports.addressGetAll = function (req, res) {
+
+   
     const studentId = req.params.studentId;
     Student.findById(studentId).exec(function (err, student) {
-        res.status(200).json(student.address);
+        console.log("getting an address");
+        res.status(200).json(student.Address);
     });
 }
 //getting one address of specific student
 module.exports.addressGetOne = function (req, res) {
     const studentId = req.params.studentId;
     Student.findById(studentId).exec(function (err, student) {
-        res.status(200).json(student.address);
+        res.status(200).json(student.Address);
     });
 }
 //adding address

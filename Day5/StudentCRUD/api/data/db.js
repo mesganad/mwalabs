@@ -2,7 +2,7 @@
 
 var mongoose = require("mongoose");
 require("./students-model.js");
-var dbURL = "mongodb://localhost:27017/studentdb";
+var dbURL = "mongodb://localhost:27017/schoolDb";
 mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.on("connected", function () {
     console.log("Mongoose connected to " + dbURL);

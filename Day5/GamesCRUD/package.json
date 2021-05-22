@@ -1,10 +1,10 @@
 {
-  "name": "app07",
+  "name": "gamesCRUD",
   "version": "1.0.0",
   "description": "this is the first application done to Mean Games application",
-  "main": "app07.js",
+  "main": "app.js",
   "scripts": {
-    "start": "app07.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mesgan",

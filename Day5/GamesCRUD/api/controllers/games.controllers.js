@@ -17,7 +17,6 @@ module.exports.gamesGateAll = function (req, res) {
     }
     //Limit check
     if (count > maxCount) {
-        //count =maxCount;
         res.status(404).json({ "messahe": "the query string count can not exceed " + maxCount });
     }
     //type check for the input query
@@ -38,27 +37,20 @@ module.exports.gamesGateAll = function (req, res) {
         }
     });
 
-
-
-
 };
 
 //get one game
 module.exports.gamesGetOne = function (req, res) {
 
     var gameId = req.params.gameId;
-
-
     Game.findById(gameId).exec(function (err, game) {
 
-        console.log("game first section");
         var response = {
             status: 200,
             message: game
         }
         if (err) {//error checking
 
-            console.log("error section");
             response.status = 500;
             response.message = err;
 

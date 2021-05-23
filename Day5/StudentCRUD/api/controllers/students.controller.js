@@ -79,7 +79,6 @@ module.exports.studentsUpdateOne = function (req, res) {
         } else {
             student.name = req.body.name;
             student.grade = req.body.year;
-            student.address = {};
             student.save(function (err, updatedStudent) {
                 if (err) {
                     response.status = 500;

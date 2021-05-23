@@ -3,6 +3,7 @@ require("./api/data/db.js");
 require("./api/data/students-model");
 let express = require("express");
 let app = express();
+app.use(express.json);
 let path = require("path");
 let routes = require("./api/routes");
 const { gamesGetAll } = require("./api/controllers/students.controller.js");

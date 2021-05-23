@@ -56,7 +56,7 @@ const _addAddress = function (req, res, Student) {
             response.message = err;
         } else {
             reponse.status = 201;
-            response.message = updatedStudent.publisher;
+            response.message = updatedStudent.address;
         }
         res.status(response.status).json(response.message);
     });
@@ -65,7 +65,6 @@ const _addAddress = function (req, res, Student) {
 //updating address
 module.exports.addressUpdate = function (req, res) {
     const studentId = req.params.studentId;
-    console.log("PUT studentId ", studentId);
     Student.findById(studentId).exec(function (err, student) {
         const response = { status: 204 };
         if (err) {
@@ -127,7 +126,6 @@ const _deletePublisher = function (req, res, student) {
     student.save(function (err, game) {
         const response = { status: 204 };
         if (err) {
-            console.log("Error finding student");
             response.status = 500;
             response.message = err;
         }

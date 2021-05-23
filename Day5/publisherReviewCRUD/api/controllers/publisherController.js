@@ -24,8 +24,7 @@ module.exports.createPublisher = function(req,resp){
         console.log(game);
         game.save(function(err, Pgame){
             if(err){
-                console.log("publisher added");
-                resp.status(204).json(Pgame);
+                resp.status(500).json(err);
             }
             else{
                 resp.status(200).json(Pgame);
@@ -50,7 +49,7 @@ module.exports.updatePublisher = function(req, resp){
             game.save(function(err,Ugame){
                 if(err){
                     console.log("publisher updated");
-                    resp.status(204).json(Ugame);
+                    resp.status(500).json(err);
                 }
                 else{
                     resp.status(200).json(Ugame);
@@ -74,7 +73,7 @@ module.exports.deletePublisher = function(req,resp){
             game.save(function(err,Ugame){
                 if(err){
                     console.log("publisher deleted");
-                    resp.status(204).json(Ugame);
+                    resp.status(500).json(err);
                 }
                 else{
                     resp.status(200).json(Ugame);

@@ -3,9 +3,13 @@ require("./api/data/db.js");
 require("./api/data/students-model");
 let express = require("express");
 let app = express();
+app.use(express.json);
 let path = require("path");
+
 let routes = require("./api/routes");
+
 const { gamesGetAll } = require("./api/controllers/students.controller.js");
+const { parse } = require("path");
 require("./api/data/db.js");
 app.set("port", 5000);
 app.use("/public", express.static(path.join(__dirname, "public")));

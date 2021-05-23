@@ -13,5 +13,5 @@ name : {
 grade :Number,
 Address:addressSchema
 });
-mongoose.model("Student", studentsSchema, "student");
+mongoose.model("Student", studentsSchema, "students");
 

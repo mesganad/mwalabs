@@ -24,8 +24,8 @@ module.exports.createPublisher = function(req,resp){
         console.log(game);
         game.save(function(err, Pgame){
             if(err){
-                console.log("publisher added");
-                resp.status(204).json(Pgame);
+                console.log("publishern not added");
+                resp.status(500).json(Pgame);
             }
             else{
                 resp.status(200).json(Pgame);

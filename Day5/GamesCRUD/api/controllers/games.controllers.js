@@ -1,5 +1,5 @@
 
-const { json } = require("express");
+const { json }= require("express");
 var mongoose = require("mongoose");
 var Game = mongoose.model("Game");
 
@@ -18,7 +18,7 @@ module.exports.gamesGateAll = function (req, res) {
     //Limit check
     if (count > maxCount) {
         //count =maxCount;
-        res.status(404).json({ "messahe": "the query string count can not exceed " + maxCount });
+        res.status(404).json({ "message": "the query string count can not exceed " + maxCount });
     }
     //type check for the input query
     if (isNaN(offset) || isNaN(count)) {

@@ -1,16 +1,16 @@
 <div style="padding: 30px;">
     <h2 style="padding-bottom: 10px;">
-        Information a bout book
+        Information about book
   
     </h2>
     
-    <h3>{{vm.book.title | uppercase}} 
+    <h3>{{vm.books.title | uppercase}} 
     </h3>
-    
-    
     <p> 
-        Keyword: {{vm.book.keyword}}<br>
-        ISBN: {{vm.book.isbn}}<br>
-        Authors: {{vm.book.author[0].lastName}} <br>
+        Title: {{vm.books.title}}<br/>
+        Keyword: {{vm.books.keyword}}<br/>
+        ISBN: {{vm.books.isbn}}<br/>
+        Price: {{vm.books.Price=100 | currency}}<br/>
+        Authors: <span ng-repeat="author in vm.books.author">{{author.firstName}} {{author.lastName}}</span> <br>
     </p>
 </div>

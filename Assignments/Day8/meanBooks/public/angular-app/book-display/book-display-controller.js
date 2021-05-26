@@ -7,6 +7,6 @@ function BookController($routeParams, BookDataFactory){
 
     BookDataFactory.getOneBook(id)
         .then(function(response){
-            vm.book = response;
+            vm.books = response;
     });
 }

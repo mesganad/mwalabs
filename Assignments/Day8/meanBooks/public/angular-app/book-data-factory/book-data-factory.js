@@ -11,7 +11,6 @@ function BookDataFactory($http){
     }
 
     function getOneBook(id){
-        console.log("get one ");
         return $http.get("/api/books/"+id).then(complete).catch(failed);
     }
 

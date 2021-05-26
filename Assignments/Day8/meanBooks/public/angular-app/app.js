@@ -1,6 +1,5 @@
 // is going to hold application module and route
 angular.module("meanBooks", ["ngRoute"]).config(config);
-console.log("hello1");
 function config($routeProvider){
     
     $routeProvider.when("/", {

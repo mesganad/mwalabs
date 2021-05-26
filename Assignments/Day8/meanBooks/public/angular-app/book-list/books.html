@@ -1,0 +1,7 @@
+<h2>{{vm.title}}</h2>
+
+<ul>
+    <li ng-repeat="book in vm.books">
+        <a ng-href="#!/book/{{book._id}}">{{book.title}}</a>
+    </li>
+</ul>

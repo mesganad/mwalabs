@@ -1,0 +1,24 @@
+<h2>{{vm.title}}</h2>
+
+<ul>
+    <li ng-repeat="book in vm.books">
+        <a ng-href="#!/books/{{book._id}}">{{book.title}}</a>
+    </li>
+</ul>
+<form name="vm.bookForm" ng-submit="vm.addBook()">
+
+    To add a new book please fill in all the fields below: <br>
+
+
+	Title: <input type="text" name="title" required ng-model="vm.newBookTitle"style="color:black"/><BR/>
+
+	Keyword: <input type="text" name="keyword" required ng-model="vm.newBookKeyword" style="color:black"/><BR/>
+
+	ISBN: <input type="number"  ng-min=1 ng-max=100 name="isbn" required ng-model="vm.newBookIsbn" style="color:black"/><BR/>
+
+    Author: <input type="text"  name = "author" required ng-model="vm.newBookAuthor" style="color:black"/>
+    <span ng-show="vm.bookForm.isbn.$dirty && vm.bookForm.isbn.$invalid" style="color:red">ISBN must be between 1 and 100.</span><BR/>
+
+	<button type="submit" class="btn-success">Add Book</button><BR/>
+
+</form>

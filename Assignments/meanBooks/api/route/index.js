@@ -1,17 +1,13 @@
-const express=require("express");
+const express = require("express");
 let router = express.Router();
 
-let jobsController = require("../controller/jobsController");
-let companyController = require("../controller/companyController");
-let addressController = require("../controller/addressController");
+let bookController = require("../controller/bookController");
+let authorController = require("../controller/authorController");
 
-router.route("/jobs").get(jobsController.getAllJobs).post(jobsController.addOneJob);
-router.route("/jobs/:jobId").get(jobsController.getOneJob).put(jobsController.updateJob).delete(jobsController.deleteJob);
+router.route("/books").get(bookController.getAllBooks).post(bookController.addOneBook);
+router.route("/books/:bookId").get(bookController.getOneBook).put(bookController.updateBook).delete(bookController.deleteBook);
 
-router.route("/jobs/:jobId/company").get(companyController.getAllCompany).post(companyController.addCompany);
-router.route("/jobs/:jobId/company/:cId").get(companyController.getOneCompany).put(companyController.updateCompany).delete(companyController.deleteCompany);
+router.route("/books/:bookId/author").get(authorController.getAllAuthors).post(authorController.addAuthor);
+router.route("/books/:bookId/author/:authorId").get(authorController.getOneAuthor).put(authorController.updateAuthor).delete(authorController.deleteAuthor);
 
-router.route("/jobs/:jobId/company/:cId/address").get(addressController.getAddress).post(addressController.addAddress);
-router.route("/jobs/:jobId/company/:cId/address/:addresId").get(addressController.getOneAddress).put(addressController.updateCompany).delete(addressController.deleteAddress);
-
-module.exports=router;
+module.exports = router;

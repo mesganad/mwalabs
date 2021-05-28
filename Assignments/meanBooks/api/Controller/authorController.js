@@ -7,7 +7,6 @@ module.exports.getAllAuthors = function (req, res) {
     const bookId = req.params.bookId;
     Books.findById(bookId).select("author").exec((err, book) => {
         if (err) {
-            console.log("Error in finding authors");
             res.status(500).json(err);
 
         } else {
@@ -23,11 +22,9 @@ module.exports.getOneAuthor = function (req, res) {
 
     Books.findById(bookId).select("author").exec(function (err, book) {
         if (err) {
-            console.log("Error finding an author");
             res.status(500).json(err);
         }
         else if (!book) {
-            console.log("Cannot find an author");
             res.status(404).json({ "message": "cannot find an author with this Id" });
         }
         else {
@@ -38,7 +35,6 @@ module.exports.getOneAuthor = function (req, res) {
 }
 
 module.exports.addAuthor = function (req, res) {
-
     const bookId = req.params.bookId;
     Books.findById(bookId).exec((err, book) => {
         if (err) {
@@ -75,11 +71,9 @@ module.exports.updateAuthor = function (req, res) {
 
     Books.findById(bookId).select("author").exec((err, book) => {
         if (err) {
-            console.log("Error finding book Id");
             res.status(500).json(err);
         }
         else if (!book) {
-            console.log("Book Id not Found");
             res.status(404).json({ "message": "Book Id not Found" });
         }
         else {
@@ -91,6 +85,11 @@ module.exports.updateAuthor = function (req, res) {
                 lastName: req.body.lastName,
                 email: req.body.email
             }
+
+            if(authorId===-1){
+                res.status(404).json({"message":"Author Id not Found"});
+            }
+
             book.save((err, updatedBook) => {
                 const response = {
                     status: 204,
@@ -115,7 +114,6 @@ module.exports.deleteAuthor = function (req, res) {
     const authorId = req.params.authorId;
     Books.findById(bookId).select("author").exec(function (err, book) {
         if (err) {
-            console.log("error finding a book");
             res.status(500).json(err);
         }
         else if (!book) {

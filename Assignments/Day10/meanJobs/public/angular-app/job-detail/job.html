@@ -1,0 +1,29 @@
+<h1>{{vm.job.title | uppercase}}</h1>
+<p>Description: {{vm.job.description}}</p>
+<p>Experience: {{vm.job.experience}} years</p>
+<p>Post Date: {{vm.job.postDate | date:"MMM/dd/yyyy h:mma"}}</p>
+<p>Salary: {{vm.job.salary | currency}}</p>
+<p>Location: </p>
+<div>
+    Country: {{vm.job.location.country}} <br>
+    State: {{vm.job.location.state}} <br>
+</div>
+<p>Job Skills</p>
+<ul>
+    <li ng-repeat="skill in vm.job.skills">{{skill.skill}}</li>
+</ul>
+
+<button ng-click="vm.deleteJob(vm.job._id)" style="margin-left: 100px">Delete</button>
+
+<span ng-if="vm.success === true" style="color: green;">
+    {{vm.message}} 
+</span>
+
+<div ng-if="vm.failur === true" style="color: red;">
+    <p style="margin: 40px; font-size: 40px;"> {{vm.message}} </p>
+</div>
+<br/>
+<h2>Add Skill</h2>
+<form name="vm.skillFrom" ng-submit="vm.addSkill(vm.job._id)" style="margin-top: 40px;">
+    Skill: <input type="text" required name="skill" ng-model="vm.skill"> <button type="submit">Add</button>
+</form>

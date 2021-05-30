@@ -1,0 +1,47 @@
+<h2>{{vm.title}}</h2>
+
+<ul>
+    <li ng-repeat="game in vm.games">
+        <a ng-href="#!/game/{{game._id}}">{{game.title}}</a>
+    </li>
+</ul>
+<hr/>
+<from name="vm.searchForm" ng-submit="vm.searchGame()">
+	Enter Game Name: <input type="text" name="game" ng-model="vm.Game" style="color:black"/>
+	<button type="submit" class="btn-success">Search</button>
+	</from>
+	<p>Search results:</p>
+	<li ng-repeat="result in vm.results">
+		<p>Search results:</p>
+		{{result.title}}
+	</li>
+<form name="vm.gameForm" ng-submit="vm.addGame()">
+<hr/>
+    To add a new game please fill in all the fields below: <br>
+
+
+	Title: <input type="text" name="title" required ng-model="vm.newGameTitle"style="color:black"/><BR/>
+
+	Price: <input type="text" name="price" required ng-model="vm.newGamePrice" style="color:black"/><BR/>
+
+	Year of Publication: <input type="text" name="year" required ng-model="vm.newGameYear" style="color:black"/><BR/>
+
+    Rating: <input type="number" ng-min=1 ng-max=5  name = "rating" required ng-model="vm.newGameRating" style="color:black"/>
+    <span ng-show="vm.gameForm.rating.$dirty && vm.gameForm.rating.$invalid" style="color:red">Rating must be between 1 and 5.</span><BR/>
+
+
+	Minimum Number of Players: <input type="number" ng-min=1 ng-max=10 name="minPlayers" required ng-model="vm.newGameMinPlayers" style="color:black"/>
+
+	<span ng-show="vm.gameForm.minPlayers.$dirty && vm.gameForm.minPlayers.$invalid" style="color:red">Minimum players must be between 1 and 10.</span><BR/>
+ 
+	Maximum Number of Players: <input type="number" ng-min=1 ng-max=10 name="maxPlayers" required ng-model="vm.newGameMaxPlayers" style="color:black"/>
+
+    <span ng-show="vm.gameForm.maxPlayers.$dirty && vm.gameForm.maxPlayers.$invalid" style="color:red">Maxinum players must be between 1 and 10.</span><BR/>
+
+	Minimum Recommended Player Age: <input type="text" name="minAge" required ng-model="vm.newGameMinAge" style="color:black"/><BR/>
+
+	Designer name: <input type="text" name="designer" required ng-model="vm.newGameDesigner" style="color:black"/><BR/>
+	
+	<button type="submit" class="btn-success">Add Game</button><BR/>
+
+</form>

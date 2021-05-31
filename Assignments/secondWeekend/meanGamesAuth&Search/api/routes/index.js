@@ -4,9 +4,8 @@ const controllerGames = require("../controllers/games-controller");
 const controllerPublisher = require("../controllers/publisher-controller");
 const controllerUsers=require("../controllers/users.controller");
 
-router.route("/games")
-.get(controllerGames.gamesGetAll).post(controllerGames.gamesAddOne);
-
+router.route("/games").get(controllerGames.gamesGetAll).post(controllerGames.gamesAddOne);
+router.route("/games/search").get(controllerGames.gameSearch);
 router.route("/games/:gameId").get(controllerGames.gamesGetOne).put(controllerGames.gamesUpdateOne)
 .delete(controllerGames.gamesDeleteOne);
 

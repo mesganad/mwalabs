@@ -7,7 +7,8 @@ function GameDataFactory($http){
         getAllGames: getAllGames,
         getOneGame: getOneGame,
         addOneGame: postGame,
-        deleteOneGame: deleteGame
+        deleteOneGame: deleteGame,
+        searchGameFun:searchGame
     };
 
     function getAllGames(){
@@ -26,9 +27,14 @@ function GameDataFactory($http){
         return $http.delete("/api/games/"+gameId).then(complete).catch(failed);
     }
 
+    function searchGame(searchKeyword){
+        console.log("inside data factory");
+        $http.get("/api/games/search?search="+searchKeyword).then(complete).catch(failed);
+        
+    }
    
     function complete(response){
-        console.log(response.data);
+        console.log("returnded game is: ",response.data);
         return response.data;
     }
 

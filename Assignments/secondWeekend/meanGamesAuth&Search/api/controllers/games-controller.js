@@ -29,7 +29,6 @@ module.exports.gamesGetAll = function(req, res){
         res.status(400).json({"message": "Count exceeds maximum of " + maxCount});
     }
 
- 
     Game.find().skip(offset).limit(count).exec(function(err, games){
         if(err){
             console.log("Err finding games");
@@ -38,7 +37,47 @@ module.exports.gamesGetAll = function(req, res){
         console.log("Found games ", games.length);
         res.status(200).json(games);
     });
+}
 
+module.exports.gameSearch = function(req, res){
+    console.log("Search games");
+    console.log(req.query);
+
+    let offset = 0;
+    let count = 5;
+    const maxCount = 10;
+    let searchKeyword="";
+
+    if(req.query && req.query.offset){
+        offset = parseInt(req.query.offset);
+    }
+    if(req.query && req.query.count){
+        count = parseInt(req.query.count); 
+    }
+    if(req.query && req.query.search){
+         searchKeyword=req.query.search;
+    }
+
+    console.log(count);
+
+    if(isNaN(offset) || isNaN(count)){
+        res.status(404).json({"message": "QueryString offset and count should be numbers"});
+        return;
+    }
+
+    if(count > maxCount){
+        res.status(400).json({"message": "Count exceeds maximum of " + maxCount});
+    }
+
+    Game.find({title:searchKeyword}).skip(offset).limit(count).exec(function(err, games){
+        console.log(games);
+        if(err){
+            console.log("Err searching games");
+            res.status(500).json(err);
+        }
+        console.log("Number of games found ", games.length);
+        res.status(200).json(games);
+    });
 }
 
 module.exports.gamesGetOne = function(req, res){

@@ -7,9 +7,6 @@ function GamesController(GameDataFactory){
     GameDataFactory.getAllGames().then(function(response){
             vm.games = response;
         });
-
-
-       
         vm.addGame = function(){
             var postData = {
                 title: vm.newGameTitle,
@@ -25,7 +22,7 @@ function GamesController(GameDataFactory){
             if(vm.gameForm.$valid){
 
                 GameDataFactory.addOneGame(postData).then(function(response){
-                    console.log("Game Saved");
+                    console.log("Game added");
                     
                 }).catch(function(error){
                     console.log(error);
@@ -33,7 +30,18 @@ function GamesController(GameDataFactory){
             }
             else {
                 vm.isSubmitted = true;
-                console.log("Data Validation Failed");
+                console.log("Form Validation Failed");
             }
         }
+        let searchKey=vm.gametitle;
+        vm.searchGame=function(searchKey){
+            
+            if(searchKey){     
+
+            GameDataFactory.searchGameFun(searchKey).then(function(response){
+                console.log("result is: "+response);
+                vm.results=response;
+            })
+        }
+    }
 }

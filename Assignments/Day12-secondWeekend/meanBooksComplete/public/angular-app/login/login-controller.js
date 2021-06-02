@@ -11,29 +11,6 @@ function LoginController($http, $location, $window, AuthFactory, jwtHelper){
         return false;
     }
 
-    vm.register = function(){
-        var user = {
-            username: vm.username,
-            password: vm.password,
-        }
-    
-        if(!vm.username || !vm.password){
-            vm.message = "";
-            vm.err = "Please enter username and password"; 
-        }else {
-            if(vm.password !== vm.passwordRepeate){
-                vm.err = "Make sure you entered correct password";
-            }else {
-                $http.post("/api/users/authenticate", user).then(function(result){
-                    vm.message = "sucessfully logged in";
-                    vm.err = "";
-                }).catch(function(err){
-    
-                });
-            }
-        }
-    }
-
     vm.login = function(){
         if(vm.username && vm.password){
             var user = {
@@ -41,7 +18,11 @@ function LoginController($http, $location, $window, AuthFactory, jwtHelper){
                 password: vm.password
             };
 
-            return $http.post("/api/users/authenticate", user).then(function(response){
+          if(!vm.username || !vm.password){
+            vm.message = "";
+            vm.err = "Please enter username and password"; 
+        }
+             $http.post("/api/users/authenticate", user).then(function(response){
 
                 if(response.data.success){
                     $window.sessionStorage.token = response.data.token;
@@ -54,6 +35,8 @@ function LoginController($http, $location, $window, AuthFactory, jwtHelper){
                     $location.path("/");
 
                 }
+				vm.message = "sucessfully logged in";
+                    vm.err = "";
             }).catch(function(err){
 
             });

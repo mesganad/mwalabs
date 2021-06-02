@@ -11,54 +11,31 @@ function LoginController($http, $location, $window, AuthFactory, GameDataFactory
         return false;
     }
 
-    vm.register = function(){
-        var user = {
+        vm.login = function () {
+        let user = {
             username: vm.username,
             password: vm.password,
         }
-    
-        if(!vm.username || !vm.password){
+		if(!vm.username || !vm.password){
             vm.message = "";
             vm.err = "Please enter username and password"; 
-        }else {
-            if(vm.password !== vm.passwordRepeate){
-                vm.err = "Make sure you entered correct password";
-            }else {
-                $http.post("/api/users/login", user).then(function(result){
-                    vm.message = "sucessfully logged in";
-                    vm.err = "";
-                }).catch(function(err){
-    
-                });
+        }
+        $http.post("/api/users/authenticate", user).then(function (response) {
+            if (response.data.success) {
+                $window.sessionStorage.token = response.data.token;
+                AuthFactory.isLoggedIn = true;
+                let token = $window.sessionStorage.token;
+                console.log(token);
+                let decodedToken = jwtHelper.decodeToken(token);
+                console.log(decodedToken);
+                vm.loggedInUser = decodedToken.name;
+                console.log("Hello", vm.loggedInUser);
             }
-        }
-    }
+            vm.message = "sucessfully logged in";
+            vm.err = "";
+        }).catch(function (err) {
 
-    vm.login = function(){
-        if(vm.username && vm.password){
-            var user = {
-                username : vm.username,
-                password: vm.password
-            };
-
-            return $http.post("/api/users/authenticate", user).then(function(response){
-
-                if(response.data.success){
-                    $window.sessionStorage.token = response.data.token;
-                    AuthFactory.isLoggedIn = true;
-                    var token = $window.sessionStorage.token;
-                    console.log(token);
-                    var decodedToken = jwtHelper.decodeToken(token);
-                    console.log(decodedToken);
-                    vm.loggedInUser = decodedToken.name;
-                    console.log("Hello",vm.loggedInUser);
-                }
-            }).catch(function(err){
-
-            });
-                
-           
-        }
+        });
     }
 
     vm.logout = function(){

@@ -1,0 +1,3 @@
+Before login, access to profile page is restricted.
+Before login, user can register, and  view games.
+After login, user can see his/her profile, add game, delete games, and view games.

@@ -1,0 +1,11 @@
+Before login:
+User is able to view home page
+user is able to view books
+user is able to search books
+user is able to sign up
+
+After Login:
+User is able to add game.
+User get into his profile.
+User is able to delete game.
+User can logout of his profile.

@@ -1,0 +1,9 @@
+
+TypeScript: It's a strict superset of javascript, and adds optional static typing and class based oop features to JS.
+ It has the following advantages:
+
+1. Types: compile time type checking.
+2. Classes: OO features like interfaces, abstract classes, inheritance...
+3. Decorators
+4. Imports
+5. Access modifiers

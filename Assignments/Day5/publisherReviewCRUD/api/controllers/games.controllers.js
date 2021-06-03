@@ -3,7 +3,6 @@ const { json } = require("express");
 var mongoose = require("mongoose");
 var Game = mongoose.model("Game");
 
-//get all games
 module.exports.gamesGateAll = function (req, res) {
 
     const maxCount = 10;
@@ -15,13 +14,12 @@ module.exports.gamesGateAll = function (req, res) {
     if (req.query && req.query.count) {
         count = parseInt(req.query.count, 10);
     }
-    //Limit check
     if (count > maxCount) {
-        res.status(404).json({ "messahe": "the query string count can not exceed " + maxCount });
+        res.status(404).json({ "message": "the query string count can not exceed " + maxCount });
     }
     //type check for the input query
     if (isNaN(offset) || isNaN(count)) {
-        res.status(404).json({ "messahe": "the query string offset and count should be a number" });
+        res.status(404).json({ "message": "the query string offset and count should be a number" });
     }
 
     //error check

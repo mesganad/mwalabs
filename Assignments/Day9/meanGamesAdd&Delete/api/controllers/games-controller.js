@@ -2,31 +2,7 @@ const mongoos =require("mongoose");
 const Game = mongoos.model("Games");
 const ObjectId = require("mongodb").ObjectId;
 
-var runGeoQuery = function(req ,res){
-    const lng = parseFloat(req.query.lng);
-    const lat = parseFloat(req.query.lat);
-    // GeoJSON point 
-    const point = {
-        type : "Point",
-        coordinates : [lng, lat]
-    };
-    Game.aggregate([
-        {
-            "$geoNear" : {
-                "near" : point, 
-                "spherical": true, 
-                "distanceField" : "distance", 
-                "maxDitance" : 7500000, 
-                "limit" : 5
-            }
-        }
-    ], function(err, results){
-        console.log("Geo results ", results);
-        console.log("Geo error ", err);
-        res.status(200).json(results);
-    }
-    );
-}
+
 
 module.exports.gamesGetAll = function(req, res){
     console.log("Get all games");
@@ -42,13 +18,6 @@ module.exports.gamesGetAll = function(req, res){
     if(req.query && req.query.count){
         count = parseInt(req.query.count); 
     }
-
-    if(res.query && req.query.lat && res.query && req.query.lng ){
-        runGeoQuery(req, res);
-        return;
-    }
-
-    console.log(count);
 
     if(isNaN(offset) || isNaN(count)){
         res.status(404).json({"message": "QueryString offset and count should be numbers"});
@@ -145,11 +114,11 @@ module.exports.gamesUpdateOne = function(req, res){
             response.status = 404;
             response.message = {"message": "Game ID not found"};
         }
-        // this means something went wrong
+
         if(response.status != 204){
             res.status(response.status).json(response.message);
         }else {
-            // we got a game, now we need to update it 
+
             game.title = req.body.title;
             game.year = parseInt(req.body.year);
             game.price = parseFloat(req.body.price);

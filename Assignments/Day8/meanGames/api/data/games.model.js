@@ -16,7 +16,7 @@ const publisherShchema = mongoose.Schema({
     location : {
         address : String,
         coordinates: {
-            type : [Number], // long(E/W), lat(N/S)
+            type : [Number],
             index : "2dsphere"
         }
     }

@@ -5,7 +5,7 @@ let express = require("express");
 let app = express();
 let path = require("path");
 let routes = require("./api/routes");
-const { gamesGetAll } = require("./api/routes/controllers/games.controllers.js");
+const { gamesGetAll } = require("./api/controllers/games.controllers.js");
 require("./api/data/db.js");
 app.set("port", 5000);
 app.use("/public", express.static(path.join(__dirname, "public")));

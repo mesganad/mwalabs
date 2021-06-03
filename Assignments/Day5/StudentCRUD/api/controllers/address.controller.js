@@ -5,7 +5,7 @@ const Student = mongoose.model("Student");
 
 module.exports.addressGetAll = function (req, res) {
 
-   
+
     const studentId = req.params.studentId;
     Student.findById(studentId).exec(function (err, student) {
         console.log("getting an address");

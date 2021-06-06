@@ -86,7 +86,7 @@ module.exports.usersAuthenticate=function(req,res){
                 message:""
             }
             if(headerExists){
-                const token=req.headers.authorization.split(" ");
+                const token=req.headers.authorization.split(" ")[1];
                 jwt.verify(token, "cs572",function(err,decoded){
                     if(err){
                         console.log(err);

@@ -30,6 +30,7 @@ function LoginController($http, $location, $window, AuthFactory, GameDataFactory
                 console.log(decodedToken);
                 vm.loggedInUser = decodedToken.name;
                 console.log("Hello", vm.loggedInUser);
+				$location.path("/");
             }
             vm.message = "sucessfully logged in";
             vm.err = "";

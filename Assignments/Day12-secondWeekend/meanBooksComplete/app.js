@@ -12,12 +12,6 @@ app.set("port", 4000);
 //middlewares
 app.use(express.json({ extended: false }));
 
-app.use("/api", function(req, res, next){
-    res.header("Access-Control-Allow-Origin", "http://localhost:4200");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
-    next();
-})
 app.use("/api", routes);
 // serving static page
 app.use(express.static(path.join(__dirname, "public")));

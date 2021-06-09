@@ -1,0 +1,34 @@
+<h1>Register</h1>
+<div ng-if="vm.message" class="alert alert-success" role="alert">
+    <p>{{vm.message}}</p>
+</div>
+<div ng-if="vm.err" class="alert alert-danger" role="alert">
+    <p>{{vm.err}}</p>
+</div>
+
+
+<form name="register" ng-submit="vm.register()" ng-if="!isLoggedIn()">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" autocapitalize="none" placeholder="Name" ng-model="vm.name" />
+    </div>
+
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" autocapitalize="none" placeholder="User name" ng-model="vm.username"
+            name="username">
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" placeholder="Password" autocapitalize="none" ng-model="vm.password"
+            name="password">
+    </div>
+
+    <div class="form-group">
+        <label for="passwordRepeat">Password Repeat:</label>
+        <input type="password" class="form-control" id="passwordRepeat" placeholder="Re-enter Password"
+            name="passwordRepeat" ng-model="vm.passwordRepeat">
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>

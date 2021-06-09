@@ -1,0 +1,23 @@
+<div *ngIf="deleteSuccess" class="alert alert-success" role="alert">
+    Book is successfully deleted
+</div>
+
+<div *ngIf="deleteFailure" class="alert alert-danger" role="alert">
+    Error while deleting book
+</div>
+<div *ngIf="book">
+
+    <span [hidden]="deleteSuccess">
+<h3>{{book.title | uppercase}} 
+</h3>
+<p> 
+    Title: {{book.title}}<br/>
+    Keyword: {{book.keyword}}<br/>
+    ISBN: {{book.isbn}}<br/>
+    <!-- Authors: {{author.firstName}} {{author.lastName}}<br/> -->
+</p>
+<button class="btn  btn-danger" (click)="deleteBook()" style="margin-right: 5px;">Delete</button>
+    </span>
+
+    <button class="btn  btn-success" (click)="goBack()">Back</button>
+</div> 

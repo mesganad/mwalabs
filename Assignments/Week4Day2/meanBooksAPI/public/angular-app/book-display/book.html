@@ -1,0 +1,24 @@
+<div ng-show="vm.deleteSuccess" class="alert alert-success" role="alert">
+    Book is successfully deleted
+</div>
+
+<div ng-show="vm.deleteSuccess == false" class="alert alert-danger" role="alert">
+    Error while deleting book
+</div>
+
+<div style="padding: 30px;">
+    <h2 style="padding-bottom: 10px;">
+        Information about book
+  
+    </h2>
+    
+    <h3>{{vm.books.title | uppercase}} 
+    </h3>
+    <p> 
+        Title: {{vm.books.title}}<br/>
+        Keyword: {{vm.books.keyword}}<br/>
+        ISBN: {{vm.books.isbn}}<br/>
+        Authors: <span ng-repeat="author in vm.books.author">{{author.firstName}} {{author.lastName}}</span> <br>
+    </p>
+    <button class="btn  btn-danger"  ng-click="vm.deleteBook(vm.books._id)">Delete</button>
+</div>

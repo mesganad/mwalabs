@@ -1,0 +1,55 @@
+<!-- <h1>{{title}}</h1> -->
+<ul>
+    <li *ngFor="let game of games"> {{game.title}}
+        <a routerLink="/game/{{game._id}}">{{game.title}}</a>
+    </li>
+
+</ul>
+
+<form style="width: 500px;">
+
+
+    <h5>
+        Add New Game
+
+    </h5>
+    <div class="form-group">
+        <label for="title">Title: </label>
+        <input type="text" name="title" class="form-control" required [(ngModel)]="game.title" style="color:black" />
+    </div>
+
+    <div class="form-group">
+        <label for="price"> Price: </label>
+        <input type="text" name="price" class="form-control" required [(ngModel)]="game.price" style="color:black" />
+    </div>
+
+
+    <div class="form-group">
+        <label for="minPlayers">Minimum Number of Players: </label>
+        <input type="number" ng-min=1 ng-max=10 class="form-control" name="minPlayers" required
+            [(ngModel)]="game.minPlayers" style="color:black" />
+    </div>
+
+
+    <div class="form-group">
+        <label for="maxPlayers">Maximum Number of Players: </label>
+        <input type="number" ng-min=1 ng-max=10 name="maxPlayers" class="form-control" required
+            [(ngModel)]="game.maxPlayers" style="color:black" />
+
+    </div>
+
+
+    <div class="form-group">
+        <label for="minAge">Minimum Recommended Player Age: </label>
+        <input type="text" name="minAge" required [(ngModel)]="game.minAge" class="form-control" style="color:black" />
+    </div>
+
+
+    
+
+
+    <button (click)="save()" class="btn btn-success">Add Game</button><BR />
+
+</form>
+
+<!-- <router-outlet></router-outlet> -->

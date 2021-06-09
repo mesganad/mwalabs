@@ -1,0 +1,29 @@
+<div *ngIf="deleteSuccess" class="alert alert-success" role="alert">
+    Game is successfully deleted
+</div>
+
+<div *ngIf="deleteFailure" class="alert alert-danger" role="alert">
+    Error while deleting game
+</div>
+
+<div *ngIf="game">
+
+    <span [hidden]="deleteSuccess">
+
+        <h3>{{game.title | uppercase}}
+
+            
+        </h3>
+
+        <p>{{game.title}}</p>
+        <p>
+            Price: {{game.price | currency}} <br>
+            Minimun Players: {{game.minPlayers}}<br>
+            Maximum Players: {{game.maxPlayers}}<br>
+            Minimun Age: {{game.minAge}}<br>
+        </p>
+        <button class="btn  btn-danger" (click)="deleteGame()" style="margin-right: 5px;">Delete</button>
+    </span>
+
+    <button class="btn  btn-success" (click)="goBack()">Back</button>
+</div> 
